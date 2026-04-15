@@ -1,0 +1,82 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Guess The Number</title>
+        <style>
+            body{
+                background-image: url("{{ url_for('static',filename='welcome for website.jpg')}}");
+                background-position: center;
+                background-size: cover;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .container{
+                text-align: flex start;
+            }
+            h2{
+                font-size: xx-large;
+                margin-bottom: 30px;
+                position: absolute;
+                top: 400px;
+                left: 50%;
+                text-align: center;
+                transform: translateX(-50%);
+                color: whitesmoke;
+                text-shadow: 
+                    0 0 10px rgba(255,255,255,0.8),
+                    0 0 20px rgba(255,255,255,0.6),
+                    0 0 30px rgba(255,255,255,0.4);
+            }
+            input{
+                height: 45px;
+                width: 300px;
+                font-size: 18px;
+                padding: 5px;
+                position: absolute;
+                bottom: 170px;
+                left: 40%;
+            }
+            button{
+                height: 30px;
+                width: 100px;
+                font-size: 18px;
+                position: absolute;
+                bottom: 235px;
+                left: 47%
+            }
+            h3{
+                height: 50px;
+                width: 100px;
+                font-size: xx-large;
+                text-align: center;
+                color: whitesmoke;
+                position: absolute;
+                bottom: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-shadow:
+                    0 0 10px rgba(255,255,255,0.8),
+                    0 0 20px rgba(255,255,255,0.6),
+                    0 0 30px rgba(255,255,255,0.4);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        <h2> Guess the number (1-100)</h2>
+        <form method="post">
+            <input type="number" name="guess" required>
+            <button type="submit">Guess</button>
+        </form>
+        <h3>{{message}}</h3>
+        {% if message and "correct" in message %}
+        <form method="post">
+            <button type="submit" name="restart" value="1">Restart</button>
+        </form>
+        {% endif %}
+        </div>
+    </body>
+</html>
